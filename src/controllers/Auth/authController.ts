@@ -4,11 +4,11 @@ import {
   NotFoundError,
   ForbiddenError,
   UnauthorizedError,
-} from "../utils/Error";
+} from "../../utils/Error";
 import { StatusCodes } from "http-status-codes";
-import { UserService } from "../services/prisma/user.service";
-import { hashPassword, comparePassword } from "../utils/hash";
-import { generateToken } from "../utils/jwt";
+import { UserService } from "../../services/prisma/user.service";
+import { hashPassword, comparePassword } from "../../utils/hash";
+import { generateToken } from "../../utils/jwt";
 
 export const register = async (
   req: Request,
@@ -65,6 +65,10 @@ export const login = async (
 
     if (!user) {
       throw new NotFoundError("User not found!");
+    }
+
+    if (!user.password) {
+      throw new NotFoundError("User not is signed in via OAuth!");
     }
 
     const isMatch = await comparePassword(password, user.password);

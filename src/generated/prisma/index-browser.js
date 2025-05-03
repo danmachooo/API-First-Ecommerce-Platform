@@ -125,8 +125,10 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   firstname: 'firstname',
-  role: 'role',
   lastname: 'lastname',
+  role: 'role',
+  provider: 'provider',
+  providerId: 'providerId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -170,17 +172,19 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
   firstname: 'firstname',
-  lastname: 'lastname'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
+  lastname: 'lastname',
+  provider: 'provider',
+  providerId: 'providerId'
 };
 
 exports.Prisma.ProductOrderByRelevanceFieldEnum = {

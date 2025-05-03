@@ -4,18 +4,22 @@ import { User, Role } from "../../generated/prisma";
 export const UserService = {
   async createUser(data: {
     email: string;
-    password: string;
+    password?: string | null;
     firstname: string;
     lastname: string;
+    provider?: string | null;
+    providerId?: string | null;
     role?: Role;
   }) {
     return await prisma.user.create({
       data: {
         email: data.email,
-        password: data.password,
+        password: data.password ?? null,
         firstname: data.firstname,
         lastname: data.lastname,
         role: data.role || "CUSTOMER",
+        provider: data.provider,
+        providerId: data.providerId || null,
       },
     });
   },
