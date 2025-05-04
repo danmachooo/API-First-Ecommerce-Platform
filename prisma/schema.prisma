@@ -24,7 +24,7 @@ model User {
   orders    Order[]
   provider String?
   providerId String? @unique
-
+  sessionToken String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

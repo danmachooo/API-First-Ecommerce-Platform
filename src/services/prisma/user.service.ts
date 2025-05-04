@@ -1,5 +1,6 @@
 import prisma from "../../prisma/client";
 import { User, Role } from "../../generated/prisma";
+import e from "express";
 
 export const UserService = {
   async createUser(data: {
@@ -37,5 +38,38 @@ export const UserService = {
         id,
       },
     });
+  },
+  async saveSession(email: string, token: string) {
+    return await prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        sessionToken: token,
+      },
+    });
+  },
+  async removeSession(id: string) {
+    return await prisma.user.update({
+      where: {
+        id: id,
+      },
+      data: {
+        sessionToken: null,
+      },
+    });
+  },
+  async isLoggedIn(email: string) {
+    console.log("Catched in Service: ", email);
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+      select: {
+        sessionToken: true,
+      },
+    });
+
+    return !!user?.sessionToken;
   },
 };

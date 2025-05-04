@@ -4,11 +4,15 @@ import {
   NotFoundError,
   ForbiddenError,
   UnauthorizedError,
-} from "../../utils/Error";
+  ConflictError,
+} from "../../utils/error.util";
 import { StatusCodes } from "http-status-codes";
 import { UserService } from "../../services/prisma/user.service";
-import { hashPassword, comparePassword } from "../../utils/hash";
-import { generateToken } from "../../utils/jwt";
+import { hashPassword, comparePassword } from "../../utils/hash.util";
+import { generateToken } from "../../utils/jwt.util";
+import { handleSession } from "../../services/session.sevice";
+import { sanitizeUser, sendAuthResponse } from "../../utils/auth.util";
+import { SrvRecord } from "dns";
 
 export const register = async (
   req: Request,
@@ -44,7 +48,7 @@ export const register = async (
       });
     }
   } catch (error: any) {
-    console.error("An error occured.");
+    console.error("Error on registering user.");
     next(error);
   }
 };
@@ -77,25 +81,32 @@ export const login = async (
       throw new NotFoundError("User not found! Invalid Credentials.");
     }
 
-    const token = generateToken({ userId: user.id, role: user.role });
+    const token = await handleSession(user);
+    const sanitizedUser = sanitizeUser(user);
 
-    const sanitizedUser = {
-      id: user.id,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      createdAt: user.createdAt,
-      email: user.email,
-      role: user.role,
-    };
-
-    res.status(StatusCodes.OK).json({
-      success: true,
-      message: "You are logged in!",
-      token,
-      user: sanitizedUser,
-    });
+    await UserService.saveSession(email, token);
+    sendAuthResponse(res, token, user, "You are logged in!: Manual AUTH");
   } catch (error: any) {
-    console.error("An error occured.");
+    console.error("Error on logging in.");
+    next(error);
+  }
+};
+
+export const logout = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const userId = req.user?.id;
+    if (!userId) throw new BadRequestError("No user is logged in.");
+
+    await UserService.removeSession(userId);
+    res
+      .status(StatusCodes.OK)
+      .clearCookie("token")
+      .json({ message: "User has been logged out!" });
+  } catch (error) {
     next(error);
   }
 };

@@ -1,5 +1,5 @@
-import { verifyToken } from "../utils/jwt";
-import { UnauthorizedError } from "../utils/Error";
+import { verifyToken } from "../utils/jwt.util";
+import { UnauthorizedError } from "../utils/error.util";
 import { Request, Response, NextFunction } from "express";
 
 export const authMiddleware = async (
@@ -7,13 +7,9 @@ export const authMiddleware = async (
   res: Response,
   next: NextFunction
 ) => {
-  const authHeader = req.headers.authorization;
-
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return next(new UnauthorizedError("No token provided."));
-  }
-
-  const token = authHeader.split(" ")[1];
+  const token = req.cookies.token;
+  console.log("Cookie Token: ", token ?? "No token");
+  if (!token) throw new UnauthorizedError("User not authenticated.");
 
   try {
     const decoded = verifyToken(token);

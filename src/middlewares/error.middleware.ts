@@ -1,4 +1,4 @@
-import { makeError } from "../utils/Error";
+import { makeError } from "../utils/error.util";
 import { Request, Response, NextFunction } from "express";
 
 export const errorHandlerMiddleware = async (

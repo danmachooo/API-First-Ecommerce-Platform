@@ -129,6 +129,7 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role',
   provider: 'provider',
   providerId: 'providerId',
+  sessionToken: 'sessionToken',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -184,7 +185,8 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   firstname: 'firstname',
   lastname: 'lastname',
   provider: 'provider',
-  providerId: 'providerId'
+  providerId: 'providerId',
+  sessionToken: 'sessionToken'
 };
 
 exports.Prisma.ProductOrderByRelevanceFieldEnum = {

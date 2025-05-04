@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { handleOAuthCallback } from "../controllers/Auth/oauthController";
+import { handleOAuthCallback } from "../controllers/Auth/oauth.controller";
 const router = express.Router();
 
 // Google OAuth

@@ -8,7 +8,7 @@ interface TokenPayload {
 const JWT_SECRET = process.env.JWT_SECRET || "helloworld";
 
 export const generateToken = (payload: object) =>
-  jwt.sign(payload, JWT_SECRET, { expiresIn: "1d" });
+  jwt.sign(payload, JWT_SECRET, { expiresIn: "7d" });
 
 export const verifyToken = (token: string): TokenPayload =>
   jwt.verify(token, JWT_SECRET) as TokenPayload;

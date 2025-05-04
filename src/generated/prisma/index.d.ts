@@ -1368,6 +1368,7 @@ export namespace Prisma {
     role: $Enums.Role | null
     provider: string | null
     providerId: string | null
+    sessionToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1381,6 +1382,7 @@ export namespace Prisma {
     role: $Enums.Role | null
     provider: string | null
     providerId: string | null
+    sessionToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1394,6 +1396,7 @@ export namespace Prisma {
     role: number
     provider: number
     providerId: number
+    sessionToken: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1409,6 +1412,7 @@ export namespace Prisma {
     role?: true
     provider?: true
     providerId?: true
+    sessionToken?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1422,6 +1426,7 @@ export namespace Prisma {
     role?: true
     provider?: true
     providerId?: true
+    sessionToken?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1435,6 +1440,7 @@ export namespace Prisma {
     role?: true
     provider?: true
     providerId?: true
+    sessionToken?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1521,6 +1527,7 @@ export namespace Prisma {
     role: $Enums.Role
     provider: string | null
     providerId: string | null
+    sessionToken: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1551,6 +1558,7 @@ export namespace Prisma {
     role?: boolean
     provider?: boolean
     providerId?: boolean
+    sessionToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     orders?: boolean | User$ordersArgs<ExtArgs>
@@ -1568,11 +1576,12 @@ export namespace Prisma {
     role?: boolean
     provider?: boolean
     providerId?: boolean
+    sessionToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstname" | "lastname" | "role" | "provider" | "providerId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstname" | "lastname" | "role" | "provider" | "providerId" | "sessionToken" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | User$ordersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1592,6 +1601,7 @@ export namespace Prisma {
       role: $Enums.Role
       provider: string | null
       providerId: string | null
+      sessionToken: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -1972,6 +1982,7 @@ export namespace Prisma {
     readonly role: FieldRef<"User", 'Role'>
     readonly provider: FieldRef<"User", 'String'>
     readonly providerId: FieldRef<"User", 'String'>
+    readonly sessionToken: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -6320,6 +6331,7 @@ export namespace Prisma {
     role: 'role',
     provider: 'provider',
     providerId: 'providerId',
+    sessionToken: 'sessionToken',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6396,7 +6408,8 @@ export namespace Prisma {
     firstname: 'firstname',
     lastname: 'lastname',
     provider: 'provider',
-    providerId: 'providerId'
+    providerId: 'providerId',
+    sessionToken: 'sessionToken'
   };
 
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
@@ -6500,6 +6513,7 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     provider?: StringNullableFilter<"User"> | string | null
     providerId?: StringNullableFilter<"User"> | string | null
+    sessionToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     orders?: OrderListRelationFilter
@@ -6514,6 +6528,7 @@ export namespace Prisma {
     role?: SortOrder
     provider?: SortOrderInput | SortOrder
     providerId?: SortOrderInput | SortOrder
+    sessionToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     orders?: OrderOrderByRelationAggregateInput
@@ -6532,6 +6547,7 @@ export namespace Prisma {
     lastname?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     provider?: StringNullableFilter<"User"> | string | null
+    sessionToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     orders?: OrderListRelationFilter
@@ -6546,6 +6562,7 @@ export namespace Prisma {
     role?: SortOrder
     provider?: SortOrderInput | SortOrder
     providerId?: SortOrderInput | SortOrder
+    sessionToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -6565,6 +6582,7 @@ export namespace Prisma {
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     provider?: StringNullableWithAggregatesFilter<"User"> | string | null
     providerId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    sessionToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -6827,6 +6845,7 @@ export namespace Prisma {
     role?: $Enums.Role
     provider?: string | null
     providerId?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderCreateNestedManyWithoutUserInput
@@ -6841,6 +6860,7 @@ export namespace Prisma {
     role?: $Enums.Role
     provider?: string | null
     providerId?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     orders?: OrderUncheckedCreateNestedManyWithoutUserInput
@@ -6855,6 +6875,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     provider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUpdateManyWithoutUserNestedInput
@@ -6869,6 +6890,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     provider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     orders?: OrderUncheckedUpdateManyWithoutUserNestedInput
@@ -6883,6 +6905,7 @@ export namespace Prisma {
     role?: $Enums.Role
     provider?: string | null
     providerId?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6896,6 +6919,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     provider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6909,6 +6933,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     provider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7237,6 +7262,7 @@ export namespace Prisma {
     role?: SortOrder
     provider?: SortOrder
     providerId?: SortOrder
+    sessionToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7250,6 +7276,7 @@ export namespace Prisma {
     role?: SortOrder
     provider?: SortOrder
     providerId?: SortOrder
+    sessionToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7263,6 +7290,7 @@ export namespace Prisma {
     role?: SortOrder
     provider?: SortOrder
     providerId?: SortOrder
+    sessionToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8259,6 +8287,7 @@ export namespace Prisma {
     role?: $Enums.Role
     provider?: string | null
     providerId?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8272,6 +8301,7 @@ export namespace Prisma {
     role?: $Enums.Role
     provider?: string | null
     providerId?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8325,6 +8355,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     provider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8338,6 +8369,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     provider?: NullableStringFieldUpdateOperationsInput | string | null
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
