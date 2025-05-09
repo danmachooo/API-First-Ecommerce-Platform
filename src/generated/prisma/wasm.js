@@ -134,14 +134,24 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.StoreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  ownerId: 'ownerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  descrption: 'descrption',
+  description: 'description',
   price: 'price',
   stock: 'stock',
   imageUrl: 'imageUrl',
   categoryId: 'categoryId',
+  storeId: 'storeId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -154,6 +164,7 @@ exports.Prisma.CategoryScalarFieldEnum = {
 exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  storeId: 'storeId',
   total: 'total',
   status: 'status',
   createdAt: 'createdAt',
@@ -189,12 +200,20 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   sessionToken: 'sessionToken'
 };
 
+exports.Prisma.StoreOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  ownerId: 'ownerId'
+};
+
 exports.Prisma.ProductOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
-  descrption: 'descrption',
+  description: 'description',
   imageUrl: 'imageUrl',
-  categoryId: 'categoryId'
+  categoryId: 'categoryId',
+  storeId: 'storeId'
 };
 
 exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
@@ -204,7 +223,8 @@ exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
 
 exports.Prisma.OrderOrderByRelevanceFieldEnum = {
   id: 'id',
-  userId: 'userId'
+  userId: 'userId',
+  storeId: 'storeId'
 };
 
 exports.Prisma.OrderItemOrderByRelevanceFieldEnum = {
@@ -228,6 +248,7 @@ exports.OrderStatus = exports.$Enums.OrderStatus = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Store: 'Store',
   Product: 'Product',
   Category: 'Category',
   Order: 'Order',

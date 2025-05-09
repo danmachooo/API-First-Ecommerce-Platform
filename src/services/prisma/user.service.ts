@@ -1,8 +1,9 @@
-import prisma from "../../prisma/client";
-import { User, Role } from "../../generated/prisma";
-import e from "express";
+import prisma from "../../lib/prisma/client.lib";
+import { Role } from "../../generated/prisma";
 
-export const UserService = {
+import { IUser, IUserService } from "../interfaces/IUserService";
+
+export class UserService implements IUserService {
   async createUser(data: {
     email: string;
     password?: string | null;
@@ -11,7 +12,7 @@ export const UserService = {
     provider?: string | null;
     providerId?: string | null;
     role?: Role;
-  }) {
+  }): Promise<IUser> {
     return await prisma.user.create({
       data: {
         email: data.email,
@@ -23,7 +24,7 @@ export const UserService = {
         providerId: data.providerId || null,
       },
     });
-  },
+  }
 
   async findUserByEmail(email: string) {
     return await prisma.user.findUnique({
@@ -31,14 +32,14 @@ export const UserService = {
         email,
       },
     });
-  },
+  }
   async findUserById(id: string) {
     return await prisma.user.findUnique({
       where: {
         id,
       },
     });
-  },
+  }
   async saveSession(email: string, token: string) {
     return await prisma.user.update({
       where: {
@@ -48,7 +49,7 @@ export const UserService = {
         sessionToken: token,
       },
     });
-  },
+  }
   async removeSession(id: string) {
     return await prisma.user.update({
       where: {
@@ -58,7 +59,7 @@ export const UserService = {
         sessionToken: null,
       },
     });
-  },
+  }
   async isLoggedIn(email: string) {
     console.log("Catched in Service: ", email);
     const user = await prisma.user.findUnique({
@@ -71,5 +72,15 @@ export const UserService = {
     });
 
     return !!user?.sessionToken;
-  },
-};
+  }
+  async promoteUser(id: string): Promise<IUser> {
+    return await prisma.user.update({
+      where: {
+        id: id,
+      },
+      data: {
+        role: "ADMIN",
+      },
+    });
+  }
+}

@@ -10,14 +10,14 @@ declare global {
 
     interface User {
       id: string;
-      email: string;
-      firstname: string;
-      lastname: string;
+      email?: string;
+      firstname?: string;
+      lastname?: string;
       role: Role;
       provider?: string | null;
       providerId?: string | null;
       sessionToken?: string | null;
-      createdAt: Date | string;
+      createdAt?: Date | string;
     }
     interface Product {
       id: string;

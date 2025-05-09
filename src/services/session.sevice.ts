@@ -1,9 +1,10 @@
-import { ConflictError } from "../utils/error.util";
+import { ConflictError } from "../shared/utils/error.util";
 import { UserService } from "./prisma/user.service";
-import { generateToken } from "../utils/jwt.util";
+import { generateToken } from "../shared/utils/jwt.util";
+import userService from "../lib/prisma/user.lib";
 
 export const handleSession = async (user: any): Promise<string> => {
-  const isLoggedIn = await UserService.isLoggedIn(user.email);
+  const isLoggedIn = await userService.isLoggedIn(user.email);
 
   if (isLoggedIn) {
     throw new ConflictError("A session already exists. Please log out first.");

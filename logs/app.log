@@ -1,0 +1,51 @@
+[2025-05-09T12:25:22.398Z] INFO [HTTP] POST /auth/register from ::1
+[2025-05-09T12:25:22.465Z] ERROR [AuthController] Error on registering user: User already exists!
+[2025-05-09T12:25:22.473Z] WARN [HTTP] POST /auth/register - Status: 400, Duration: 75ms
+[2025-05-09T12:42:36.268Z] INFO [HTTP] POST /api/auth/register from ::1
+[2025-05-09T12:42:36.279Z] ERROR [AuthController] Error on registering user: User already exists!
+[2025-05-09T12:42:36.283Z] WARN [HTTP] POST /api/auth/register - Status: 400, Duration: 15ms
+[2025-05-09T12:43:10.271Z] INFO [HTTP] POST /api/auth/register from ::1
+[2025-05-09T12:43:10.343Z] INFO [AuthController] User registered: helloworld@gmail.com
+[2025-05-09T12:43:10.344Z] INFO [HTTP] POST /api/auth/register - Status: 201, Duration: 73ms
+[2025-05-09T12:43:38.336Z] INFO [HTTP] POST /api/auth/login from ::1
+[2025-05-09T12:43:38.401Z] INFO [AuthController] User logged in: helloworld@gmail.com
+[2025-05-09T12:43:38.402Z] INFO [HTTP] POST /api/auth/login - Status: 200, Duration: 66ms
+[2025-05-09T12:43:58.290Z] INFO [HTTP] POST /api/auth/logout from ::1
+[2025-05-09T12:43:58.296Z] INFO [AuthController] User logged out: 2c0ef9b8-a476-430f-9093-f5ff2b801ab6
+[2025-05-09T12:43:58.298Z] INFO [HTTP] POST /api/auth/logout - Status: 200, Duration: 8ms
+[2025-05-09T12:44:28.829Z] INFO [HTTP] GET /api/oauth/facebook/ from ::1
+[2025-05-09T12:44:28.832Z] INFO [HTTP] GET /api/oauth/facebook/ - Status: 302, Duration: 3ms
+[2025-05-09T12:44:30.749Z] INFO [HTTP] GET /api/oauth/facebook/ from ::1
+[2025-05-09T12:44:30.751Z] INFO [HTTP] GET /api/oauth/facebook/ - Status: 302, Duration: 2ms
+[2025-05-09T12:44:35.329Z] INFO [HTTP] GET /api/oauth/facebook/callback?code=AQDNwkTBmX_I3u9i2tDwQI61hDpIOfm3sXHA-nxsUHMNR-BYOQlJnnp0ebJK7AgYY1QMd5u34tztoTjeBICjIuNif6WyES1Efkohr2L7swpuEw8HEm-Te4K8japvZeEVNW7c4jz1Z-sxPjSvnpqu9SX9q1TMv7ADja12kPBxhpDR9mRroWthghDrtForpBEKkLVsNH2x9_AYiijEvQ74r80j9FS7pTgwacSHP1xAnMYq_mIqxxS_UeVCq4iDTKjNTssD-ojDWcxsPHKxN-ITFSM3RhHe_ANYmHpNIqpLDehr5MujHZAu8joMZ6mEsUlOdS_9DKNe3tdzPvjBkIgDufvWN6VE6IhddPUkGxMiW2llJZw7qzn1BAe2Onhu-uJKcvI from ::1
+[2025-05-09T12:44:36.141Z] ERROR [OAuthController] An error occured on OAuth.
+[2025-05-09T12:44:36.142Z] WARN [HTTP] GET /api/oauth/facebook/callback?code=AQDNwkTBmX_I3u9i2tDwQI61hDpIOfm3sXHA-nxsUHMNR-BYOQlJnnp0ebJK7AgYY1QMd5u34tztoTjeBICjIuNif6WyES1Efkohr2L7swpuEw8HEm-Te4K8japvZeEVNW7c4jz1Z-sxPjSvnpqu9SX9q1TMv7ADja12kPBxhpDR9mRroWthghDrtForpBEKkLVsNH2x9_AYiijEvQ74r80j9FS7pTgwacSHP1xAnMYq_mIqxxS_UeVCq4iDTKjNTssD-ojDWcxsPHKxN-ITFSM3RhHe_ANYmHpNIqpLDehr5MujHZAu8joMZ6mEsUlOdS_9DKNe3tdzPvjBkIgDufvWN6VE6IhddPUkGxMiW2llJZw7qzn1BAe2Onhu-uJKcvI - Status: 409, Duration: 813ms
+[2025-05-09T12:44:36.178Z] INFO [HTTP] GET /favicon.ico from ::1
+[2025-05-09T12:44:36.180Z] WARN [HTTP] GET /favicon.ico - Status: 404, Duration: 2ms
+[2025-05-09T12:45:16.826Z] INFO [HTTP] GET /api/oauth/facebook/ from ::1
+[2025-05-09T12:45:16.828Z] INFO [HTTP] GET /api/oauth/facebook/ - Status: 302, Duration: 2ms
+[2025-05-09T12:45:17.763Z] INFO [HTTP] GET /api/oauth/facebook/ from ::1
+[2025-05-09T12:45:17.765Z] INFO [HTTP] GET /api/oauth/facebook/ - Status: 302, Duration: 2ms
+[2025-05-09T12:45:21.688Z] INFO [HTTP] GET /api/oauth/facebook/callback?code=AQCgAI0Ar9jXxU9qGVFzEbdeHMb7hJEiap1LtAPxGSVhYPtF2dCrml9kqWyp5H-SxepSJFJ-JIyug9NLJD6F7M-xijflpMGfdtgX2zw1SzaqvH_3yetQKfWZL4cEfRneUhii952ztGQu-JIpQy7vQXYKwflb7zyhRBr0-1B48TTwiyZ7lZFko4Y0BizHepqAN_x1624Uea-KwrercRW7eKQguTSO8R8BSLNaEfGLIdJijWUprgxlMf3iWMAjx9xBc5eyjfvwX3BkrutywE2KQoHOKuY65L7sqV50ONvf1RPDMkzetfuJ438812_5UEB6IffnBSZuMJ4BiAP0NsSRPT6GgM2g9m6f6MEiLRz7vhwH50jhZfeKZg_tAvHQ-5PcIwM from ::1
+[2025-05-09T12:45:22.673Z] INFO [HTTP] GET /api/oauth/facebook/callback?code=AQCgAI0Ar9jXxU9qGVFzEbdeHMb7hJEiap1LtAPxGSVhYPtF2dCrml9kqWyp5H-SxepSJFJ-JIyug9NLJD6F7M-xijflpMGfdtgX2zw1SzaqvH_3yetQKfWZL4cEfRneUhii952ztGQu-JIpQy7vQXYKwflb7zyhRBr0-1B48TTwiyZ7lZFko4Y0BizHepqAN_x1624Uea-KwrercRW7eKQguTSO8R8BSLNaEfGLIdJijWUprgxlMf3iWMAjx9xBc5eyjfvwX3BkrutywE2KQoHOKuY65L7sqV50ONvf1RPDMkzetfuJ438812_5UEB6IffnBSZuMJ4BiAP0NsSRPT6GgM2g9m6f6MEiLRz7vhwH50jhZfeKZg_tAvHQ-5PcIwM - Status: 200, Duration: 985ms
+[2025-05-09T12:47:56.751Z] INFO [HTTP] GET /api/oauth/facebook/ from ::1
+[2025-05-09T12:47:56.756Z] INFO [HTTP] GET /api/oauth/facebook/ - Status: 302, Duration: 5ms
+[2025-05-09T12:48:00.682Z] INFO [HTTP] GET /api/oauth/facebook/callback?code=AQBc-wkLL8FwFeVl05S892ZzYweygBZEuVq8AMS_veWS-UdTXfNQSuEZS09HMwseqCvPoJhJRIr5E62akuxaxxoLLkuM5L-uo8zqcmK7di1isXvdxlrd4jD5wKrDAbE55JqocjcScfSD0PjwH0wPMCvc5xl9Clo5h1UfeUaCG7wCEPYtVFqn3thYmuhjjOdve9FH4fGF6hZkiHDfahqL_gVzI1gb2BtnDQcdDFwGAgpJm3Mnxw2TcyWDU4dWfd8mFA9hVC_4PJ3CelblkUNmUA4RELXA5I5voUVOOmbzJKFlFVunHawVodqRfPd7aHIBt6RsIuLuGH2acKRQezmLSf4gUNcFz6VAGpDVyXdPEN7kWu7TPYV5rjuLQThyYU-7wgo from ::1
+[2025-05-09T12:48:01.375Z] INFO [OAuthController] Lelouch has been logged in using OAuth Facebook
+[2025-05-09T12:48:01.377Z] INFO [HTTP] GET /api/oauth/facebook/callback?code=AQBc-wkLL8FwFeVl05S892ZzYweygBZEuVq8AMS_veWS-UdTXfNQSuEZS09HMwseqCvPoJhJRIr5E62akuxaxxoLLkuM5L-uo8zqcmK7di1isXvdxlrd4jD5wKrDAbE55JqocjcScfSD0PjwH0wPMCvc5xl9Clo5h1UfeUaCG7wCEPYtVFqn3thYmuhjjOdve9FH4fGF6hZkiHDfahqL_gVzI1gb2BtnDQcdDFwGAgpJm3Mnxw2TcyWDU4dWfd8mFA9hVC_4PJ3CelblkUNmUA4RELXA5I5voUVOOmbzJKFlFVunHawVodqRfPd7aHIBt6RsIuLuGH2acKRQezmLSf4gUNcFz6VAGpDVyXdPEN7kWu7TPYV5rjuLQThyYU-7wgo - Status: 200, Duration: 696ms
+[2025-05-09T13:37:18.925Z] INFO [HTTP] POST /api/auth/login from ::1
+[2025-05-09T13:37:19.041Z] INFO [OAuthController] Lulu has been logged in using OAuth Facebook
+[2025-05-09T13:37:19.044Z] INFO [AuthController] User logged in: helloworld@gmail.com
+[2025-05-09T13:37:19.044Z] INFO [HTTP] POST /api/auth/login - Status: 200, Duration: 119ms
+[2025-05-09T13:52:17.282Z] INFO [HTTP] POST /api/store from ::1
+[2025-05-09T13:52:17.344Z] INFO [StoreController] Store registered: Danmacho's Store
+[2025-05-09T13:52:17.345Z] INFO [HTTP] POST /api/store - Status: 201, Duration: 64ms
+[2025-05-09T13:56:13.584Z] INFO [HTTP] POST /api/store from ::1
+[2025-05-09T13:56:13.603Z] INFO [StoreController] Store registered: Danmachooo's Store
+[2025-05-09T13:56:13.604Z] INFO [HTTP] POST /api/store - Status: 201, Duration: 21ms
+[2025-05-09T13:56:28.682Z] INFO [HTTP] POST /api/store from ::1
+[2025-05-09T13:56:28.700Z] INFO [StoreController] Store registered: Danmachoosssso's Store
+[2025-05-09T13:56:28.701Z] INFO [HTTP] POST /api/store - Status: 201, Duration: 19ms
+[2025-05-09T14:03:26.979Z] INFO [HTTP] POST /api/store from ::1
+[2025-05-09T14:03:26.998Z] INFO [StoreController] Store registered: Pogi's Store
+[2025-05-09T14:03:26.999Z] INFO [HTTP] POST /api/store - Status: 201, Duration: 20ms
