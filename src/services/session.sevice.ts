@@ -1,6 +1,6 @@
 import { ConflictError } from "../shared/utils/error.util";
 import { UserService } from "./prisma/user.service";
-import { generateToken } from "../shared/utils/jwt.util";
+import { generateToken } from "../modules/auth/jwt.util";
 import userService from "../lib/prisma/user.lib";
 
 export const handleSession = async (user: any): Promise<string> => {

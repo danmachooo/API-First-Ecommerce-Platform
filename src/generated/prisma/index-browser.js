@@ -129,9 +129,16 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role',
   provider: 'provider',
   providerId: 'providerId',
-  sessionToken: 'sessionToken',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  token: 'token',
+  createdAt: 'createdAt',
+  expiresAt: 'expiresAt'
 };
 
 exports.Prisma.StoreScalarFieldEnum = {
@@ -196,8 +203,13 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   firstname: 'firstname',
   lastname: 'lastname',
   provider: 'provider',
-  providerId: 'providerId',
-  sessionToken: 'sessionToken'
+  providerId: 'providerId'
+};
+
+exports.Prisma.SessionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  token: 'token'
 };
 
 exports.Prisma.StoreOrderByRelevanceFieldEnum = {
@@ -248,6 +260,7 @@ exports.OrderStatus = exports.$Enums.OrderStatus = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Session: 'Session',
   Store: 'Store',
   Product: 'Product',
   Category: 'Category',

@@ -1,4 +1,5 @@
-import { verifyToken } from "../utils/jwt.util";
+import redisClient from "../../lib/prisma/redis.lib";
+import { verifyToken } from "../../modules/auth/jwt.util";
 import { UnauthorizedError } from "../utils/error.util";
 import { Request, Response, NextFunction } from "express";
 
@@ -8,9 +9,9 @@ export const authMiddleware = async (
   next: NextFunction
 ) => {
   const token = req.cookies.token;
-  console.log("Cookie Token: ", token ?? "No token");
-  if (!token) throw new UnauthorizedError("User not authenticated.");
-
+  if (!token) throw new UnauthorizedError("No token provided.");
+  const isBlacklisted = await redisClient.get(`blacklist:${token}`);
+  if (isBlacklisted) throw new UnauthorizedError("Token is invalid");
   try {
     const decoded = verifyToken(token);
     req.user = {

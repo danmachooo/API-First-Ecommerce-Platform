@@ -49,3 +49,60 @@
 [2025-05-09T14:03:26.979Z] INFO [HTTP] POST /api/store from ::1
 [2025-05-09T14:03:26.998Z] INFO [StoreController] Store registered: Pogi's Store
 [2025-05-09T14:03:26.999Z] INFO [HTTP] POST /api/store - Status: 201, Duration: 20ms
+[2025-05-10T12:04:34.045Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T12:04:34.087Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T12:04:34.092Z] INFO [AuthController] User Logged out
+[2025-05-10T12:04:58.312Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T12:04:58.349Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T12:04:58.353Z] INFO [AuthController] User Logged out
+[2025-05-10T12:17:30.095Z] INFO [TestContext] Test message
+[2025-05-10T12:17:30.468Z] ERROR [TestContext] Error message
+[2025-05-10T12:17:30.569Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:17:56.733Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:17:56.930Z] INFO [TestContext] Test message
+[2025-05-10T12:17:56.949Z] ERROR [TestContext] Error message
+[2025-05-10T12:19:06.217Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:19:06.410Z] INFO [TestContext] Test message
+[2025-05-10T12:19:06.417Z] ERROR [TestContext] Error message
+[2025-05-10T12:31:10.131Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:31:10.180Z] INFO [TestContext] Test message
+[2025-05-10T12:31:10.187Z] ERROR [TestContext] Error message
+[2025-05-10T12:31:12.967Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T12:31:12.989Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T12:31:12.993Z] INFO [AuthController] User Logged out
+[2025-05-10T12:39:11.201Z] INFO [TestContext] Test message
+[2025-05-10T12:39:11.236Z] ERROR [TestContext] Error message
+[2025-05-10T12:39:11.560Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:39:15.656Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T12:39:15.674Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T12:39:15.688Z] INFO [AuthController] User Logged out
+[2025-05-10T12:40:17.922Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T12:40:17.957Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T12:40:17.957Z] INFO [TestContext] Test message
+[2025-05-10T12:40:17.947Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:40:17.962Z] ERROR [TestContext] Error message
+[2025-05-10T12:40:17.982Z] INFO [AuthController] User Logged out
+[2025-05-10T12:47:54.472Z] INFO [TestContext] Test message
+[2025-05-10T12:47:54.947Z] ERROR [TestContext] Error message
+[2025-05-10T12:47:54.581Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:47:54.693Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T12:47:54.965Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T12:47:54.970Z] INFO [AuthController] User Logged out
+[2025-05-10T12:51:46.127Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T12:51:47.522Z] INFO [TestContext] Test message
+[2025-05-10T12:51:47.530Z] ERROR [TestContext] Error message
+[2025-05-10T12:51:47.591Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T12:51:47.617Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T12:51:47.621Z] INFO [AuthController] User Logged out
+[2025-05-10T13:09:32.491Z] INFO [TestContext] Test message
+[2025-05-10T13:09:32.498Z] ERROR [TestContext] Error message
+[2025-05-10T13:09:32.597Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T13:09:37.972Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T13:09:38.230Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T13:09:38.470Z] INFO [AuthController] User Logged out
+[2025-05-10T13:14:43.149Z] INFO [TestContext] Test message
+[2025-05-10T13:14:43.156Z] ERROR [TestContext] Error message
+[2025-05-10T13:14:43.232Z] INFO [OAuthController] undefined has been logged in using OAuth Facebook
+[2025-05-10T13:14:45.736Z] INFO [AuthController] User registered: test@example.com
+[2025-05-10T13:14:45.815Z] INFO [AuthController] User logged in: test@example.com
+[2025-05-10T13:14:45.825Z] INFO [AuthController] User Logged out

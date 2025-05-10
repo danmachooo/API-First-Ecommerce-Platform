@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { UserService } from "../../services/prisma/user.service";
 import { handleSession } from "../../services/session.sevice";
-import { sanitizeUser, sendAuthResponse } from "../../shared/utils/auth.util";
+import { sanitizeUser, sendAuthResponse } from "./auth.util";
 import { UnauthorizedError } from "../../shared/utils/error.util";
 import { Logger } from "../../shared/utils/logger";
 

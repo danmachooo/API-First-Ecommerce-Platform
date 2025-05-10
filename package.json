@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:clear-cache": "jest --clearCache",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
@@ -20,10 +22,12 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "http-status-codes": "^2.3.0",
+    "ioredis": "^5.6.1",
     "jsonwebtoken": "^9.0.2",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "prisma": "^6.7.0",
+    "tsyringe": "^4.10.0",
     "zod": "^3.24.4"
   },
   "devDependencies": {
@@ -31,14 +35,18 @@
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
+    "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.3",
     "@types/passport": "^1.0.17",
     "@types/passport-facebook": "^3.0.3",
     "@types/passport-google-oauth20": "^2.0.16",
     "eslint": "^9.25.1",
+    "jest": "^29.7.0",
+    "jest-mock-extended": "^4.0.0-beta1",
     "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
+    "ts-jest": "^29.3.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }

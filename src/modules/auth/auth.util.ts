@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { Logger } from "./logger";
+import { Logger } from "../../shared/utils/logger";
 
 export const sanitizeUser = (user: any) => ({
   id: user.id,

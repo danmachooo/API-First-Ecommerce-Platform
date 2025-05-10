@@ -3,97 +3,107 @@ import { Request, Response, NextFunction } from "express";
 import { UserService } from "../../services/prisma/user.service";
 import { BadRequestError, NotFoundError } from "../../shared/utils/error.util";
 import { StatusCodes } from "http-status-codes";
-import { hashPassword, comparePassword } from "../../shared/utils/hash.util";
+import { BcryptCryptoService, ICryptoService } from "./crypto.service";
 
 import { handleSession } from "../../services/session.sevice";
-import { sanitizeUser, sendAuthResponse } from "../../shared/utils/auth.util";
+import { sanitizeUser, sendAuthResponse } from "./auth.util";
 import { Logger } from "../../shared/utils/logger";
+import { AuthService } from "./auth.service";
+import { ISessionStrategy } from "./session.strategy";
+import { ResponseBuilder } from "../../shared/utils/response.util";
+import { ConfigService } from "../../config/config.service";
 
+/**
+ * Handles HTTP requests for authentication operations.
+ */
 export class AuthController {
-  constructor(private service: UserService) {}
+  constructor(
+    private service: AuthService,
+    private cryptoService: ICryptoService,
+    private sessionStrategy: ISessionStrategy
+  ) {}
 
+  /**
+   * Registers a new user with the provided credentials.
+   * @throws BadRequestError if user already exists
+   */
   async register(req: Request, res: Response, next: NextFunction) {
-    try {
-      const { email, password, firstname, lastname } = req.body;
+    const { email, password, firstname, lastname } = req.body;
 
-      const existingUser = await this.service.findUserByEmail(email);
-      if (existingUser) {
-        throw new BadRequestError("User already exists!");
-      }
-
-      const hashedPassword = await hashPassword(password);
-
-      const user = await this.service.createUser({
-        email,
-        password: hashedPassword,
-        firstname,
-        lastname,
-      });
-
-      res.status(StatusCodes.CREATED).json({
-        success: true,
-        message: "A new user has been registered!",
-        user,
-      });
-      Logger.info(`User registered: ${email}`, "AuthController");
-    } catch (error: any) {
-      Logger.error(
-        `Error on registering user: ${error.message}`,
-        "AuthController"
-      );
-      next(error);
+    const existingUser = await this.service.findUserByEmail(email);
+    if (existingUser) {
+      throw new BadRequestError("User already exists!");
     }
+
+    const hashedPassword = await this.cryptoService.hashPassword(password);
+
+    const user = await this.service.register({
+      email,
+      password: hashedPassword,
+      firstname,
+      lastname,
+    });
+
+    Logger.info(`User registered: ${email}`, "AuthController");
+    res
+      .status(StatusCodes.CREATED)
+      .json(
+        ResponseBuilder.success("A new user has been registered!", { user })
+      );
   }
 
+  /**
+   * Logs in a user with email and password.
+   * @throws NotFoundError if user not found or credentials invalid
+   */
   async login(req: Request, res: Response, next: NextFunction) {
-    try {
-      const { email, password } = req.body;
+    const { email, password } = req.body;
 
-      const user = await this.service.findUserByEmail(email);
-      if (!user) {
-        throw new NotFoundError("User not found!");
-      }
-
-      if (!user.password) {
-        throw new NotFoundError("User is signed in via OAuth!");
-      }
-
-      const isMatch = await comparePassword(password, user.password);
-      if (!isMatch) {
-        throw new NotFoundError("Invalid credentials!");
-      }
-
-      const token = await handleSession(user);
-      const sanitizedUser = sanitizeUser(user);
-
-      await this.service.saveSession(email, token);
-      sendAuthResponse(
-        res,
-        token,
-        sanitizedUser,
-        "You are logged in!: Manual AUTH"
-      );
-      Logger.info(`User logged in: ${email}`, "AuthController");
-    } catch (error: any) {
-      Logger.error(`Error on logging in: ${error.message}`, "AuthController");
-      next(error);
+    const user = await this.service.findUserByEmail(email);
+    if (!user) {
+      throw new NotFoundError("User not found!");
     }
+
+    if (!user.password) {
+      throw new NotFoundError("User is signed in via OAuth!");
+    }
+
+    const isMatch = await this.cryptoService.comparePassword(
+      password,
+      user.password
+    );
+    if (!isMatch) {
+      throw new NotFoundError("Invalid credentials!");
+    }
+
+    const token = await this.sessionStrategy.createSession(user);
+    const sanitizedUser = sanitizeUser(user);
+
+    await this.service.saveSession(email, token);
+    Logger.info(`User logged in: ${email}`, "AuthController");
+    res
+      .cookie("token", token, ConfigService.getCookieOptions())
+      .status(StatusCodes.OK)
+      .json(
+        ResponseBuilder.success("You are logged in!", {
+          user: sanitizedUser,
+          token,
+        })
+      );
   }
 
   async logout(req: Request, res: Response, next: NextFunction) {
-    try {
-      const userId = req.user?.id;
-      if (!userId) throw new BadRequestError("No user is logged in.");
+    const userId = req.user?.id;
+    const token = req.cookies.token;
 
-      await this.service.removeSession(userId);
-      res
-        .status(StatusCodes.OK)
-        .clearCookie("token")
-        .json({ message: "User has been logged out!" });
-      Logger.info(`User logged out: ${userId}`, "AuthController");
-    } catch (error: any) {
-      Logger.error(`Error on logging out: ${error.message}`, "AuthController");
-      next(error);
-    }
+    if (!userId) throw new BadRequestError("No user is logged in.");
+
+    await this.service.removeSession(userId, token);
+    Logger.info(`User Logged out`, "AuthController");
+
+    res
+      .status(StatusCodes.OK)
+      .clearCookie("token", ConfigService.getCookieOptions())
+      .json(ResponseBuilder.success("User has been logged out!"));
   }
 }
